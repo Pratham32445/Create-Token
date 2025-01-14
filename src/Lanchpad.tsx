@@ -1,11 +1,15 @@
 import { useWallet } from "@solana/wallet-adapter-react";
+import {createMint, getMinimumBalanceForRentExemptMint, } from "@solana/spl-token"
 import {
   WalletDisconnectButton,
   WalletMultiButton,
-} from "@solana/wallet-adapter-react-ui";
+} from "@solana/wallet-adapter-react-ui"; 
 
 const Lanchpad = () => {
   const wallet = useWallet();
+  const createToken = async () => {
+    const lamports = await getMinimumBalanceForRentExemptMint(connection);
+  }
   return (
     <div>
       <div className="flex justify-between p-4 absolute w-full">
@@ -40,7 +44,7 @@ const Lanchpad = () => {
                 className="block p-4 w-full bg-neutral-700 my-4 text-white"
               />
               <div className="flex justify-center">
-                <button className="bg-black p-4 text-white">
+                <button onClick={createToken} className="bg-black p-4 text-white">
                   Create Token
                 </button>
               </div>
